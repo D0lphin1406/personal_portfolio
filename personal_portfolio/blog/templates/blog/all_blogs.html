@@ -1,0 +1,17 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+    <center><h2>МОЙ БЛОГ</h2></center>
+
+    <h3>Арсен написал {{ blogs.count }} постов</h3><br>
+
+    {% for blog in blogs %}
+
+    <a href="{% url 'blog:detail' blog.id %}"><h3>{{ blog.title }}<h3></a>
+    <h5>{{ blog.date|date:'M d Y' | upper }}</h5>
+    <p>{{ blog.description|safe|truncatechars:100 }}</p>
+
+    {% endfor %}
+    <a href="{% url 'home' %}">Вернуться к проектам</a>
+
+{% endblock %}
